@@ -1,0 +1,1 @@
+import tseslint from 'typescript-eslint'; export default tseslint.config({ignores:['dist/**','src-tauri/**','archive/**']},...tseslint.configs.recommended,{files:['server/**/*.mjs','scripts/**/*.mjs'],languageOptions:{globals:{process:'readonly',console:'readonly',setTimeout:'readonly',URL:'readonly',fetch:'readonly'}}});

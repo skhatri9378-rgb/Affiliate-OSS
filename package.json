@@ -1,0 +1,82 @@
+{
+  "name": "affiliate-os",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "tsc --noEmit && vite build",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run src && node --test server/*.test.mjs",
+    "lint": "eslint src server scripts",
+    "format": "prettier --write src server scripts",
+    "format:check": "prettier --check src server scripts",
+    "tauri": "tauri",
+    "app:dev": "tauri dev",
+    "app:build": "tauri build",
+    "test:rust": "cargo +1.90.0 test --manifest-path src-tauri/Cargo.toml",
+    "start": "node server/index.mjs",
+    "test:frontend": "vitest run src",
+    "test:backend": "node --test server/*.test.mjs",
+    "check": "npm run format:check && npm run lint && npm run build && npm test && npm run test:rust",
+    "electron:dev": "npm run build && electron .",
+    "electron:build": "npm run build && electron-builder --mac dir",
+    "electron:smoke": "electron . --smoke-test"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2",
+    "lucide-react": "latest",
+    "radix-ui": "latest",
+    "react": "^19",
+    "react-dom": "^19",
+    "zod": "^4"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4",
+    "@tauri-apps/cli": "^2",
+    "@testing-library/jest-dom": "latest",
+    "@testing-library/react": "latest",
+    "@testing-library/user-event": "latest",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "latest",
+    "electron": "45.2.1",
+    "electron-builder": "26.18.0",
+    "eslint": "^10.13.0",
+    "jsdom": "latest",
+    "prettier": "^3",
+    "tailwindcss": "^4",
+    "typescript": "^5.9",
+    "typescript-eslint": "^8",
+    "vite": "^8",
+    "vitest": "latest"
+  },
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "main": "electron/main.mjs",
+  "description": "Local affiliate link manager with channels, websites, countries and link health checks",
+  "build": {
+    "appId": "com.affiliateos.electron",
+    "productName": "Affiliate Links Electron",
+    "directories": {
+      "output": "electron-release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "server/*.mjs",
+      "server/schema.sql",
+      "!server/*.test.mjs",
+      "package.json"
+    ],
+    "mac": {
+      "target": [
+        "dir"
+      ],
+      "icon": "src-tauri/icons/icon.icns",
+      "category": "public.app-category.productivity"
+    },
+    "asar": true
+  }
+}

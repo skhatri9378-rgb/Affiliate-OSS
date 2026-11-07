@@ -1,0 +1,52 @@
+# Dependencies and generated builds
+node_modules/
+dist/
+/target/
+src-tauri/target/
+src-tauri/gen/
+coverage/
+.vite/
+*.tsbuildinfo
+
+# Local databases, backups, and previous builds
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+/archive/
+/backups/
+*.app/
+*.dmg
+*.pkg
+
+# Environment files and local secrets
+.env
+.env.*
+!.env.example
+!.env.sample
+*.pem
+*.key
+*.p12
+*.pfx
+*.keystore
+*.jks
+*.mobileprovision
+*.provisionprofile
+.npmrc
+/secrets/
+/credentials/
+
+# Logs and machine/editor state
+*.log
+.DS_Store
+.AppleDouble
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Electron packages
+electron-release/
